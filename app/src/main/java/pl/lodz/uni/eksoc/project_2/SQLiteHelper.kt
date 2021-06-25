@@ -17,7 +17,6 @@ class SQLiteHelper(context:Context):
         private const val ID = "id"
         private const val NAME = "name"
         private const val EMAIL = "email"
-        private const val EMAIL1 = "email1"
 
 
     }
