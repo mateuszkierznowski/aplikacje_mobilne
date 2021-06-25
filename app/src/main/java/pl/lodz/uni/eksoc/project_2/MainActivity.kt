@@ -1,5 +1,6 @@
 package pl.lodz.uni.eksoc.project_2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,40 +27,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
-        initRecyclerView()
-        getStudents()
+//        initRecyclerView()
+//        getStudents()
         btnAdd.setOnClickListener{addStudent()}
-        btnView.setOnClickListener { getStudents() }
+        btnView.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
         btnUpdate.setOnClickListener { updateStudent() }
-        adapter?.setOnClickItem{Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
-            edName.setText(it.name)
-            edEmail.setText(it.name)
-            std = it
-        }
-        adapter?.setOnClickDeleteItem {
-            deleteStudent(it.id)
-        }
+//        adapter?.setOnClickItem{Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
+//            edName.setText(it.name)
+//            edEmail.setText(it.name)
+//            std = it
+//        }
+
+//        adapter?.setOnClickDeleteItem {
+//            deleteStudent(it.id)
+//        }
 
     }
-    private fun deleteStudent(id:Int){
-        if(id == null) return
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage("Are you sure you want to delete this user")
-        builder.setCancelable(true)
-        builder.setPositiveButton("Yes"){dialog, _->
-            sqliteHelper.deleteStudentById(id)
-            getStudents()
-            dialog.dismiss()}
-        builder.setNegativeButton("No"){dialog, _-> dialog.dismiss()}
-        val alert = builder.create()
-        alert.show()
-    }
+//    private fun deleteStudent(id:Int){
+//        if(id == null) return
+//        val builder = AlertDialog.Builder(this)
+//        builder.setMessage("Are you sure you want to delete this user")
+//        builder.setCancelable(true)
+//        builder.setPositiveButton("Yes"){dialog, _->
+//            sqliteHelper.deleteStudentById(id)
+////            getStudents()
+//            dialog.dismiss()}
+//        builder.setNegativeButton("No"){dialog, _-> dialog.dismiss()}
+//        val alert = builder.create()
+//        alert.show()
+//    }
 
-    private fun getStudents(){
-        println("in get students fun")
-        val stdList = sqliteHelper.getAllStudent()
-        adapter?.addItems(stdList)
-    }
+
 
     private fun addStudent() {
         val name = edName.text.toString()
@@ -90,11 +91,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun initRecyclerView(){
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = StudentAdapter()
-        recyclerView.adapter = adapter
-    }
+//    private fun initRecyclerView(){
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//        adapter = StudentAdapter()
+//        recyclerView.adapter = adapter
+//    }
 
     private fun initView(){
         edName = findViewById(R.id.edName)
@@ -102,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         btnAdd = findViewById(R.id.btnAdd)
         btnView = findViewById(R.id.btnView)
         btnUpdate = findViewById(R.id.btnUpdate)
-        recyclerView = findViewById(R.id.recyclerView)
+//        recyclerView = findViewById(R.id.recyclerView)
     }
 
     private fun updateStudent(){
@@ -110,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         val email = edEmail.text.toString()
 
         if (name == std?.name && email == std?.email){
-            Toast.makeText(this, "Rekord no changed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Record no changed", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -119,7 +120,7 @@ class MainActivity : AppCompatActivity() {
         val status = sqliteHelper.updateStudent(std)
         if (status > -1){
             clearEditText()
-            getStudents()
+//            getStudents()
         } else {
             Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
         }
