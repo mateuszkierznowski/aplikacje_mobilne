@@ -27,7 +27,7 @@ class SecondActivity : AppCompatActivity() {
         getStudents()
         val actionBar = supportActionBar
 
-        actionBar!!.title = "Students"
+        actionBar!!.title = "Players Base"
 
         actionBar.setDisplayHomeAsUpEnabled(true)
         adapter?.setOnClickDeleteItem {
@@ -37,11 +37,22 @@ class SecondActivity : AppCompatActivity() {
             Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
             val intent = Intent(this, user_activity::class.java)
 //            edName.setText(it.name).toString()
-            intent.putExtra("Name", it.name)
-            intent.putExtra("Email", it.email)
+            print("Champions played")
+            print(it.champ2)
+            print(it.champ3)
+            print(it.champ1)
 
-//            edEmail.setText(it.email)
-//            std = it
+            intent.putExtra("Name", it.name)
+            intent.putExtra("wl1", it.wl1)
+            intent.putExtra("wl2", it.wl2)
+            intent.putExtra("wl3", it.wl3)
+            intent.putExtra("champ1", it.champ1)
+            intent.putExtra("champ2", it.champ2)
+            intent.putExtra("champ3", it.champ3)
+            intent.putExtra("kda1", it.kda1)
+            intent.putExtra("kda2", it.kda2)
+            intent.putExtra("kda3", it.kda3)
+            intent.putExtra("id", it.id)
             startActivity(intent)
         }
 
