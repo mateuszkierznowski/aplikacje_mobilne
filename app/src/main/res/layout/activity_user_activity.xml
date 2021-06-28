@@ -20,7 +20,21 @@
             tools:layout_editor_absoluteY="160dp" />
 
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/kils"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="208dp" />
+        <TextView
+            android:id="@+id/favoritechamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="208dp" />
+        <TextView
+            android:id="@+id/winratio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
