@@ -43,8 +43,10 @@ class MainActivity : AppCompatActivity() {
         }
 //        btnUpdate.setOnClickListener { updateStudent() }
         val win_lose = arrayOf("Win",  "Lose")
-        val champions = arrayOf("Nidalee",  "Tryndamare", "Teemo")
-        val kils  = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9")
+        val champions = arrayOf("Draven", "Ezreal", "Jhin", "Jinx", "Kai'Sa", "Kalista",
+        "Kog'Maw", "Lucian", "Miss Fortune", "Quinn")
+        val kils  = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+            "15")
         val win_lose_adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, win_lose)
         val champion_adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, champions)
         val kils_adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, kils)
