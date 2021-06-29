@@ -6,7 +6,7 @@
     <string name="champ1">Champion Game 1</string>
     <string name="champ2">Champion Game 2</string>
     <string name="champ3">Champion Game 3</string>
-    <string name="kda1">Kda Game 1</string>
-    <string name="kda2">Kda Game 2</string>
-    <string name="kda3">Kda Game 3</string>
+    <string name="kda1">Kils Game 1</string>
+    <string name="kda2">Kills Game 2</string>
+    <string name="kda3">Kills Game 3</string>
 </resources>
