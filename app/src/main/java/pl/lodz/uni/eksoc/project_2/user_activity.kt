@@ -4,6 +4,7 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 
 class user_activity : AppCompatActivity() {
@@ -13,6 +14,9 @@ class user_activity : AppCompatActivity() {
         val actionBar = supportActionBar
         val textView_name: TextView = findViewById(R.id.name)
         val textView_kils: TextView = findViewById(R.id.kils)
+
+        val image: ImageView = findViewById(R.id.imageView)
+
         val textView_winratio: TextView = findViewById(R.id.winratio)
         val textView_favchamp: TextView = findViewById(R.id.favoritechamp)
 
@@ -28,6 +32,7 @@ class user_activity : AppCompatActivity() {
         val get_kda2 = intent.getStringExtra("kda2").toString().toInt()
         val get_kda3 = intent.getStringExtra("kda3").toString().toInt()
 
+
         val wins = listOf(get_w1, get_w2, get_w3) as List<String>
         val champs = listOf(get_champ1, get_champ2, get_champ3) as List<String>
         val maxOccurring = champs.groupBy { it }.mapValues { it.value.size }.maxBy { it.value }?.key
@@ -36,6 +41,12 @@ class user_activity : AppCompatActivity() {
         actionBar!!.title = get_name
 
         textView_name.text = get_name
+
+        if (maxOccurring.toString() == "Draven"){
+            image.setImageResource(R.drawable.draven)
+        } else if (maxOccurring.toString() == "Ezreal") {
+            image.setImageResource(R.drawable.ezreal)
+        }
 
         textView_kils.text = kils.toString()
         textView_winratio.text = winratio.toString()
