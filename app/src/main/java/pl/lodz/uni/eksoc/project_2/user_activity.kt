@@ -4,6 +4,7 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 
 class user_activity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class user_activity : AppCompatActivity() {
         val actionBar = supportActionBar
         val textView_name: TextView = findViewById(R.id.name)
         val textView_kils: TextView = findViewById(R.id.kils)
+        val image: ImageView = findViewById(R.id.imageView)
         val textView_winratio: TextView = findViewById(R.id.winratio)
         val textView_favchamp: TextView = findViewById(R.id.favoritechamp)
 
@@ -37,25 +39,47 @@ class user_activity : AppCompatActivity() {
 
         textView_name.text = get_name
 
-        textView_kils.text = kils.toString()
-        textView_winratio.text = winratio.toString()
-        textView_favchamp.text = maxOccurring.toString()
-
-    }
-
-    private fun kil_count(kil1: Int, kil2: Int, kil3: Int): Float {
-        var result = (kil1.toFloat() + kil2.toFloat() + kil3.toFloat()) / 3
-        return "%.${2}f".format(result).toFloat()
-    }
-
-    private fun winratio(games: List<String>): Float {
-        var winratio = 0.0
-        for (item: String in games) {
-            if (item == "Win") {
-                winratio += 1.0
-            }
+        if (maxOccurring.toString() == "Draven") {
+            image.setImageResource(R.drawable.draven)
+        } else if (maxOccurring.toString() == "Ezreal") {
+            image.setImageResource(R.drawable.ezreal)
+        } else if (maxOccurring.toString() == "Jhin") {
+            image.setImageResource(R.drawable.jhin)
+        } else if (maxOccurring.toString() == "Jinx") {
+            image.setImageResource(R.drawable.jinx)
+        } else if (maxOccurring.toString() == "Kai'Sa") {
+            image.setImageResource(R.drawable.kaisa)
+        } else if (maxOccurring.toString() == "Kalista") {
+            image.setImageResource(R.drawable.kalista)
+        } else if (maxOccurring.toString() == "Kog'Maw") {
+            image.setImageResource(R.drawable.kogmaw)
+        } else if (maxOccurring.toString() == "Lucian") {
+            image.setImageResource(R.drawable.lucian)
+        } else if (maxOccurring.toString() == "Miss Fortune") {
+            image.setImageResource(R.drawable.missfortune)
+        } else if (maxOccurring.toString() == "Quinn") {
+            image.setImageResource(R.drawable.quinn)
         }
-        winratio = winratio/3*100
-        return "%.${2}f".format(winratio).toFloat()
+
+            textView_kils.text = kils.toString()
+            textView_winratio.text = winratio.toString()
+            textView_favchamp.text = maxOccurring.toString()
+
+        }
+
+        private fun kil_count(kil1: Int, kil2: Int, kil3: Int): Float {
+            var result = (kil1.toFloat() + kil2.toFloat() + kil3.toFloat()) / 3
+            return "%.${2}f".format(result).toFloat()
+        }
+
+        private fun winratio(games: List<String>): Float {
+            var winratio = 0.0
+            for (item: String in games) {
+                if (item == "Win") {
+                    winratio += 1.0
+                }
+            }
+            winratio = winratio / 3 * 100
+            return "%.${2}f".format(winratio).toFloat()
+        }
     }
-}
