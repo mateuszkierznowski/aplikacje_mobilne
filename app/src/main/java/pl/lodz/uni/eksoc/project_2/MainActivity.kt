@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var spinner_kda3: Spinner
 
     var sqliteHelper: SQLiteHelper = SQLiteHelper(this)
-//    private var adapter: StudentAdapter? = null
-//    private lateinit var recyclerView:RecyclerView
     private var std:StudentModel? = null
 
 
@@ -34,14 +32,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
-//        initRecyclerView()
-//        getStudents()
+
         btnAdd.setOnClickListener{addStudent()}
         btnView.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
-//        btnUpdate.setOnClickListener { updateStudent() }
         val win_lose = arrayOf("Win",  "Lose")
         val champions = arrayOf("Draven", "Ezreal", "Jhin", "Jinx", "Kai'Sa", "Kalista",
         "Kog'Maw", "Lucian", "Miss Fortune", "Quinn")
@@ -245,14 +241,11 @@ class MainActivity : AppCompatActivity() {
 
         if (name.isEmpty()){
             Toast.makeText(this, "PLEASE ENTER REQUIRED FILES", Toast.LENGTH_SHORT).show()
-            println("puste pola")
         } else {
-            println("dodaj wartosci do bazki")
             val std = StudentModel(name = name, wl1 = wlg1, wl2 = wlg2, wl3 = wlg3, champ1 = champ1, champ2 = champ2, champ3 = champ3, kda1 = kda1, kda2 = kda2, kda3 = kda3)
-            println("dodaj wartosci sqliteHelper")
             val status = sqliteHelper.insertStudent(std)
             if(status > -1){
-                Toast.makeText(this, "Student Added...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Player Added...", Toast.LENGTH_SHORT).show()
                 clearEditText()
             } else {
                 Toast.makeText(this, "RECORD NOT SAVED...", Toast.LENGTH_SHORT).show()
@@ -266,12 +259,6 @@ class MainActivity : AppCompatActivity() {
         edName.requestFocus()
 
     }
-
-//    private fun initRecyclerView(){
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//        adapter = StudentAdapter()
-//        recyclerView.adapter = adapter
-//    }
 
     private fun initView(){
         edName = findViewById(R.id.edName)
@@ -288,25 +275,7 @@ class MainActivity : AppCompatActivity() {
         spinner_kda3 = findViewById(R.id.spinner_kda3)
 
 
-//        recyclerView = findViewById(R.id.recyclerView)
     }
 
-//    private fun updateStudent(){
-//        val name = edName.text.toString() //
-//        if (name == std?.name && email == std?.email){
-//            Toast.makeText(this, "Record no changed", Toast.LENGTH_SHORT).show()
-//            return
-//        }
-//
-//        if (std == null) return
-//        val std = StudentModel(id = std!!.id, name = name, email = email)
-//        val status = sqliteHelper.updateStudent(std)
-//        if (status > -1){
-//            clearEditText()
-////            getStudents()
-//        } else {
-//            Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
-//        }
-//
-//    }
+
 }

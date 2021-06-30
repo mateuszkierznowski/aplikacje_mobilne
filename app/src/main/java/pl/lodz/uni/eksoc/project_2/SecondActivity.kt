@@ -37,7 +37,6 @@ class SecondActivity : AppCompatActivity() {
             Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
             val intent = Intent(this, user_activity::class.java)
 //            edName.setText(it.name).toString()
-            print("Champions played")
             print(it.champ2)
             print(it.champ3)
             print(it.champ1)
