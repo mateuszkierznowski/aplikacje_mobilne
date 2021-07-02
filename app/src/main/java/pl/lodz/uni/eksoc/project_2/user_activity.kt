@@ -41,8 +41,8 @@ class user_activity : AppCompatActivity() {
         val maxOccurring = champs.groupBy { it }.mapValues { it.value.size }.maxBy { it.value }?.key
         val kils = kil_count(get_kda1, get_kda2, get_kda3)
         val winratio = winratio(wins)
-        actionBar!!.title = get_name
 
+        actionBar!!.title = get_name
         textView_name.text = get_name
 
 

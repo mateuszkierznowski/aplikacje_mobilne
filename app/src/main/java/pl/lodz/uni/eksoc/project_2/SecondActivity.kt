@@ -11,12 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SecondActivity : AppCompatActivity() {
 
-    private lateinit var edName: EditText
-    private lateinit var edEmail: EditText
     private lateinit var recyclerView: RecyclerView
     private var adapter: StudentAdapter? = null
     var sqliteHelper: SQLiteHelper = SQLiteHelper(this)
-    private var std:StudentModel? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +33,6 @@ class SecondActivity : AppCompatActivity() {
         adapter?.setOnClickItem{
             Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
             val intent = Intent(this, user_activity::class.java)
-//            edName.setText(it.name).toString()
-            print(it.champ2)
-            print(it.champ3)
-            print(it.champ1)
 
             intent.putExtra("Name", it.name)
             intent.putExtra("wl1", it.wl1)

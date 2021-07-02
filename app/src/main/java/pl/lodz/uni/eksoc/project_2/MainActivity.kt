@@ -231,12 +231,8 @@ class MainActivity : AppCompatActivity() {
         val champ2 = spinner_champion2.getSelectedItem().toString()
         val champ3 = spinner_champion3.getSelectedItem().toString()
         val kda1 = spinner_kda1.getSelectedItem().toString()
-        print("WARTOść kda:")
-        print(kda1)
         val kda2 = spinner_kda2.getSelectedItem().toString()
-        print(kda2)
         val kda3 = spinner_kda3.getSelectedItem().toString()
-        print(kda3)
 
 
         if (name.isEmpty()){

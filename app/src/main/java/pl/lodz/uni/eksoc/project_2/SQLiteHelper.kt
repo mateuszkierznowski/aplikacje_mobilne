@@ -27,7 +27,6 @@ class SQLiteHelper(context:Context):
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        println("on create")
         val createTblStudent = ("CREATE TABLE " + TBL_PLAYERS + "("
                 + ID + " INTEGER PRIMARY KEY,"
                 + NAME + " TEXT,"
@@ -44,7 +43,6 @@ class SQLiteHelper(context:Context):
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        println("on upgrade")
         db!!.execSQL("DROP TABLE IF EXISTS $TBL_PLAYERS")
         onCreate(db)
     }
@@ -119,18 +117,6 @@ class SQLiteHelper(context:Context):
         return stdList
 
     }
-
-//    fun updateStudent(std: StudentModel): Int {
-//        val db = this.writableDatabase
-//        val contentValues = ContentValues()
-//        contentValues.put(ID, std.id)
-//        contentValues.put(NAME, std.name)
-//        contentValues.put(EMAIL, std.email)
-//
-//        val sucess = db.update(TBL_STUDENT, contentValues, "id=" + std.id, null)
-//        db.close()
-//        return sucess
-//        }
 
     fun deleteStudentById(id:Int): Int{
         val db = this.writableDatabase
